@@ -42,18 +42,29 @@ my_file_handle = open(file_name)
 
 # set accumulator to 0
 # TODO: What is an accumulator and how are they used?
+#An accumulator is used to collect information from a sequence and stores the result in the variable.
+
 count = 0
 # Read the file line by line.
 # TODO: Where did my_file_handle come from? How was it created? What is it? What is my_line?
+# My_file_handle came from the open function. In this instance,
+# it took the mbox-short.txt file and stored it into file_name,
+# which then was opened in my_file_handle. My_line is the iterator in the loop.
 for my_line in my_file_handle:
     # TODO: What does [0:5] mean? What is this decision control structure checking?
+    # The [0:5] is the indexing. It is checking the lines indexed 0-5 in
+    # the .txt file and checking if they are equal to "From"
     if (my_line[0:5] == "From "):
         # TODO: What are the elements of a list? What does split() do?
+        # The elements of a list are index [0-5]. Split() splits a string into a list.
         my_list_of_words = my_line.split()
         print("dir(list):")
         # TODO: What is x[1] here?
+        # x[1] is the first line/index of words in the split list.
         print(my_list_of_words[1])
         # TODO: What is happening here?
+        # This is splitting the list as soon as it finds an @ element.
+        # The splits are according to @.
         two_parts = my_list_of_words[1].split('@')
         print(two_parts)
         prefix = two_parts[0]
@@ -61,6 +72,7 @@ for my_line in my_file_handle:
         print(prefix)
         print(domain)
         # TODO: Why don't we use count++?
+        # We don't use count++ because we only want 1 to be added to count.
         count = count + 1
 
 print("\n\nThere were", count, "lines in the file with 'From ' as the first word!\n\n")
@@ -101,6 +113,8 @@ for my_line in my_file_handle:
 big_count = None
 big_word = None
 # TODO: What other programming language can use two variables as loop control variables?
+# Another programming language that can use two variables as
+# loop control variables is C++ or Java.
 for my_key,my_val in num_of_msgs.items():
     if big_count is None or my_val > big_count:
         big_word = my_key
